@@ -16,7 +16,7 @@ jobs:
     - name: List .tar.xz files and update package.index
       run: |
         > package.index
-        find . -name "*.tar.xz" -exec basename {} \; > package.index
+        find . -name "*.tar.xz" -exec basename {} \; | sed 's/\.tar\.xz$//' > package.index
         cat package.index
 
     - name: Commit and push changes
